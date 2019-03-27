@@ -1,7 +1,10 @@
 const path = require('path');
 const Webpck = require('webpack');
+const chalk = require('chalk');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+
 
 module.exports = {
   mode: 'development',
@@ -20,7 +23,13 @@ module.exports = {
     filename: '[name].[chunkhash:5].js'
   },
   plugins: [
-    new Webpck.ProgressPlugin(), // 打包时在控制台显示进度条
+    // new Webpck.ProgressPlugin(function handler(percentage, msg) {
+    //   console.log((percentage.toFixed(2) * 100) + '%', msg);
+    // }), // 显示进度
+    new ProgressBarPlugin({
+      format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+      clear: false
+    }), // 显示进度条
     new CleanWebpackPlugin(), // 每次打包前清理dist文件夹
     new HtmlWebpackPlugin({
       title: 'yan7',
@@ -37,5 +46,6 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  stats: 'errors-only', //打包时控制台只显示错误信息
 }
