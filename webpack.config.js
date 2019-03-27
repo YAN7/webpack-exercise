@@ -27,8 +27,10 @@ module.exports = {
     //   console.log((percentage.toFixed(2) * 100) + '%', msg);
     // }), // 显示进度
     new ProgressBarPlugin({
-      format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
-      clear: false
+      format: '  build [:bar] ' + chalk.cyan.bold(':percent') + ' (:elapsed seconds)',
+      clear: false,
+      summary: false, // 不使用默认的build成功之后的log
+      customSummary: (a, b, c) => console.log(chalk.green.bold(`Build success in ${a}`)) // 自定义build成功之后的log
     }), // 显示进度条
     new CleanWebpackPlugin(), // 每次打包前清理dist文件夹
     new HtmlWebpackPlugin({
