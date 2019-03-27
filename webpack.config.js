@@ -24,7 +24,7 @@ module.exports = {
     new CleanWebpackPlugin(), // 每次打包前清理dist文件夹
     new HtmlWebpackPlugin({
       title: 'yan7',
-      template: path.join(__dirname, 'src/index.html')
+      template: path.join(__dirname, 'src/index.html'), // 打包的模板文件
     }),
   ],
   module: {
