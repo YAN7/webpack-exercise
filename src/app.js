@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 
 class App extends Component {
   render() {
-    return <div>123123123</div>
+    return <div>lalalla</div>
   }
 }
 

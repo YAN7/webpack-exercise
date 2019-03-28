@@ -20,7 +20,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     // filename: '[name].[hash:5].js',
-    filename: '[name].[chunkhash:5].js'
+    filename: '[name].[hash:5].js'
   },
   plugins: [
     // new Webpck.ProgressPlugin(function handler(percentage, msg) {
@@ -48,6 +48,12 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port: 1234,
+    hot: true,
+    compress: true,
   },
   stats: 'errors-only', //打包时控制台只显示错误信息
 }
